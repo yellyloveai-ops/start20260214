@@ -3,56 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Yelly.ink</title>
+    <title>Yelly AI — yelly-spark & yelly-time</title>
     <style>
+        *, *::before, *::after { box-sizing: border-box; }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f4f8;
-            color: #333;
+            background: #0d1117;
+            color: #e6edf3;
+            line-height: 1.6;
+        }
+
+        /* ── Header ── */
+        header {
+            background: linear-gradient(135deg, #1a2a3a 0%, #0d1117 100%);
+            border-bottom: 1px solid #21262d;
+            padding: 60px 24px 56px;
             text-align: center;
         }
-        header {
-            background-color: #2ab0ff;
-            color: white;
-            padding: 20px;
+        header .badge {
+            display: inline-block;
+            background: rgba(42, 176, 255, 0.15);
+            color: #2ab0ff;
+            border: 1px solid rgba(42, 176, 255, 0.3);
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            margin-bottom: 20px;
         }
-        main {
-            padding: 40px;
+        header h1 {
+            margin: 0 0 12px;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            background: linear-gradient(90deg, #2ab0ff, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        footer {
-            padding: 20px;
-            background-color: #2ab0ff;
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+        header p {
+            margin: 0 auto;
+            max-width: 520px;
+            color: #8b949e;
+            font-size: 1.05rem;
         }
-        a {
-            color: white;
+
+        /* ── Products ── */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 900px;
+            margin: 56px auto;
+            padding: 0 24px;
+        }
+
+        .card {
+            background: #161b22;
+            border: 1px solid #21262d;
+            border-radius: 14px;
+            padding: 36px 32px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .card:hover {
+            border-color: #2ab0ff;
+            transform: translateY(-2px);
+        }
+
+        .card-icon {
+            font-size: 2.4rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .card h2 {
+            margin: 0 0 8px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #e6edf3;
+        }
+        .card h2 span {
+            color: #2ab0ff;
+        }
+
+        .card .tagline {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 14px;
+        }
+
+        .card p {
+            color: #8b949e;
+            font-size: 0.95rem;
+            margin: 0 0 24px;
+        }
+
+        .features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 28px;
+        }
+        .features li {
+            color: #c9d1d9;
+            font-size: 0.9rem;
+            padding: 4px 0;
+        }
+        .features li::before {
+            content: "✦ ";
+            color: #2ab0ff;
+            font-size: 0.7rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
             text-decoration: none;
+            transition: opacity 0.2s;
         }
-        a:hover {
-            text-decoration: underline;
+        .btn:hover { opacity: 0.85; }
+        .btn-primary {
+            background: #2ab0ff;
+            color: #0d1117;
         }
+        .btn-secondary {
+            background: transparent;
+            color: #2ab0ff;
+            border: 1px solid #2ab0ff;
+            margin-left: 10px;
+        }
+
+        /* spark accent */
+        .card.spark { border-color: #f97316; }
+        .card.spark:hover { border-color: #fb923c; }
+        .card.spark .features li::before { color: #f97316; }
+        .card.spark h2 span { color: #f97316; }
+        .card.spark .btn-primary { background: #f97316; }
+        .card.spark .btn-secondary { color: #f97316; border-color: #f97316; }
+
+        /* ── Footer ── */
+        footer {
+            border-top: 1px solid #21262d;
+            padding: 32px 24px;
+            text-align: center;
+            color: #484f58;
+            font-size: 0.88rem;
+        }
+        footer a { color: #484f58; text-decoration: none; }
+        footer a:hover { color: #8b949e; }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>Welcome to Yelly.ink</h1>
-        <p>Launching February 14, 2026</p>
+        <div class="badge">Yelly AI — Now Live</div>
+        <h1>Two products. One mission.</h1>
+        <p>Yelly AI ships tools that put AI to work — in your browser and in your terminal.</p>
     </header>
-    <main>
-        <h2>Innovating the Future</h2>
-        <p>At Yelly.ink, we are passionate about transforming industries through cutting-edge artificial intelligence solutions.</p>
-        <blockquote>&quot;The best way to predict the future is to invent it.&quot; - Alan Kay</blockquote>
-        <p><strong>Join us on this exciting journey!</strong></p>
-    </main>
+
+    <section class="products">
+
+        <!-- yelly-spark -->
+        <div class="card spark">
+            <span class="card-icon">⚡</span>
+            <h2>yelly-<span>spark</span></h2>
+            <div class="tagline">Browser Userscript</div>
+            <p>
+                A Tampermonkey userscript that surfaces context-aware AI prompts on
+                any page — with live placeholder substitution, GitHub sync, and
+                direct Claude / ChatGPT API streaming.
+            </p>
+            <ul class="features">
+                <li>URL-aware prompt matching</li>
+                <li>Inline streaming via Claude &amp; ChatGPT APIs</li>
+                <li>GitHub-synced prompt library</li>
+                <li>Shadow DOM — works on CSP-strict pages</li>
+                <li>Draggable floating panel</li>
+            </ul>
+            <a href="https://github.com/yellyloveai-ops/userscripts" class="btn btn-primary">View on GitHub</a>
+        </div>
+
+        <!-- yelly-time -->
+        <div class="card">
+            <span class="card-icon">⏱️</span>
+            <h2>yelly-<span>time</span></h2>
+            <div class="tagline">AI Scheduling Server</div>
+            <p>
+                A lightweight Node.js server that schedules and runs AI coding
+                tasks on a timed loop — supporting Codex CLI, Claude Code, and
+                Gemini CLI runtimes out of the box.
+            </p>
+            <ul class="features">
+                <li>Multi-runtime: Codex, Claude, Gemini</li>
+                <li>Cron-style schedule management</li>
+                <li>Session &amp; pre-approval rule engine</li>
+                <li>Secure sandbox with domain allowlists</li>
+                <li>REST API + simple web UI</li>
+            </ul>
+            <a href="https://github.com/yellyloveai-ops/userscripts/tree/main/yelly-time" class="btn btn-primary">View on GitHub</a>
+        </div>
+
+    </section>
+
     <footer>
-        <p>Follow us on social media:</p>
-        <p><a href="#">Twitter</a> | <a href="#">LinkedIn</a> | <a href="#">Facebook</a></p>
-        <p>Contact us: info@yelly.ink</p>
+        <p>
+            &copy; 2026 Yelly AI &nbsp;·&nbsp;
+            <a href="mailto:info@yelly.ink">info@yelly.ink</a> &nbsp;·&nbsp;
+            <a href="https://github.com/yellyloveai-ops">GitHub</a>
+        </p>
     </footer>
+
 </body>
 </html>
